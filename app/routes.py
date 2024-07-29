@@ -1,4 +1,4 @@
-from flask import render_template, request, redirect, url_for
+from flask import current_app as app, render_template, request, redirect, url_for
 from . import db
 from .models import Video
 from scripts.video_processing import process_video
@@ -8,7 +8,7 @@ from scripts.embeddings import generate_text_embedding, search_similar_videos
 
 @app.route('/')
 def index():
-    return render_template('upload.html')
+    return render_template('base.html')
 
 @app.route('/upload', methods=['POST'])
 def upload():
@@ -18,14 +18,17 @@ def upload():
         file.save(video_path)
         segments = process_video(video_path)
         inference_results = run_inference(segments)
-        save_to_database(inference_results)
-        return redirect(url_for('results'))
+        query = "This is a video of a person " + str(inference_results)
+        embeddings = generate_text_embedding(query)
+        save_to_database(inference_results, video_path, embeddings)
+        return redirect(url_for('results', filename=file.filename))
     return redirect(url_for('index'))
 
 @app.route('/results')
 def results():
     videos = query_database()
-    return render_template('results.html', videos=videos)
+    filename = request.args.get('filename')
+    return render_template('results.html', videos=videos, filename=filename)
 
 @app.route('/search', methods=['POST'])
 def search():

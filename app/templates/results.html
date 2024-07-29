@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Results</title>
+  </head>
+  <body>
+    <h1>Video Upload Results</h1>
+
+    {% if filename %}
+    <p>Video '{{ filename }}' successfully uploaded!</p>
+    {% endif %}
+
+    <h2>Uploaded Videos</h2>
+    <ul>
+      {% for video in videos %}
+      <li>{{ video.name }} - {{ video.description }}</li>
+      {% endfor %}
+    </ul>
+
+    <a href="{{ url_for('upload') }}">Upload another video</a>
+    <a href="{{ url_for('search') }}">Search for videos</a>
+  </body>
+</html>

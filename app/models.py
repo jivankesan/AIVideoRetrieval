@@ -6,3 +6,6 @@ class Video(db.Model):
     start_time = db.Column(db.Float, nullable=False)
     end_time = db.Column(db.Float, nullable=False)
     embedding = db.Column(db.PickleType, nullable=False)
+
+    def __repr__(self) -> str:
+        return f'<Video {self.name}>'

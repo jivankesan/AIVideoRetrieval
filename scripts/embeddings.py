@@ -1,4 +1,6 @@
 from sentence_transformers import SentenceTransformer, util
+from scripts.database import query_database
+import torch
 
 model = SentenceTransformer('all-MiniLM-L6-v2')
 

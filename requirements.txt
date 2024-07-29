@@ -4,3 +4,4 @@ torch
 sentence-transformers
 opencv-python
 torchvision
+functional

@@ -1,15 +1,14 @@
-from .models import Video
-from . import db
+from app.models import Video
+from app import db
 
-def save_to_database(results):
-    for result in results:
-        video = Video(
-            name=result['name'],
-            start_time=result['start_time'],
-            end_time=result['end_time'],
-            embedding=result['embedding']
-        )
-        db.session.add(video)
+def save_to_database(result, path, embedding):
+    video = Video(
+        name=path,
+        start_time=0,
+        end_time=0,
+        embedding=embedding
+    )
+    db.session.add(video)
     db.session.commit()
 
 def query_database():
