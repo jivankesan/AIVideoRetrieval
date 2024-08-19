@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>All Uploaded Videos</title>
+    <link
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="container mt-5">
+      <h1>All Uploaded Videos</h1>
+
+      <ul class="list-group">
+        {% for video in videos %}
+        <li
+          class="list-group-item d-flex justify-content-between align-items-center"
+        >
+          <div>
+            <strong>{{ video.name }}</strong>
+            <br />
+            Action: {{ video.action }}
+            <br />
+            Start Time: {{ video.start_time }}
+            <br />
+            End Time: {{ video.end_time }}
+          </div>
+          <div>
+            <video width="320" height="240" controls class="mt-3">
+              <source
+                src="{{ url_for('static', filename='processed_videos/' + video.name) }}"
+                type="video/mp4"
+              />
+              Your browser does not support the video tag.
+            </video>
+          </div>
+          <div>
+            <form
+              action="{{ url_for('delete_video', video_id=video.id) }}"
+              method="post"
+              onsubmit="return confirm('Are you sure you want to delete this video?');"
+            >
+              <button type="submit" class="btn btn-danger btn-sm">
+                Delete
+              </button>
+            </form>
+          </div>
+        </li>
+        {% endfor %}
+      </ul>
+
+      <button
+        class="btn btn-primary mt-3"
+        onclick="location.href='{{ url_for('index') }}'"
+      >
+        Home
+      </button>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  </body>
+</html>

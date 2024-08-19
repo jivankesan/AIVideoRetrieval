@@ -1,0 +1,94 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Environment variables
+.env
+.env.*
+
+# Python virtual environment
+venv/
+*.env
+
+# Flask instance folder
+instance/
+data/
+# Static files generated during runtime
+static/
+
+# Flask-SQLAlchemy database files
+*.sqlite3
+*.db
+
+# Migrations folder
+migrations/
+
+# Logs and error files
+*.log
+
+# System files
+.DS_Store
+Thumbs.db
+
+# Python egg files
+*.egg
+*.egg-info/
+dist/
+build/
+eggs/
+
+# IDE and editor files
+.vscode/
+.idea/
+*.swp
+
+# Pytest cache
+.pytest_cache/
+
+# Jupyter Notebook checkpoints
+.ipynb_checkpoints/
+
+# Coverage reports
+htmlcov/
+.coverage
+.tox/
+.nox/
+.cache/
+nosetests.xml
+coverage.xml
+*.cover
+
+# Distribution / packaging
+.Python
+*.pyo
+*.pyd
+.Python
+.python-version
+
+# Generated files
+*.h5
+*.pkl
+*.pickle
+*.so
+*.tar.gz
+*.zip
+*.whl
+*.out
+
+# Custom compiled libraries
+build/
+develop-eggs/
+installed-eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+
+# Test results
+.test/
+tests/
+coverage/
+.cache/

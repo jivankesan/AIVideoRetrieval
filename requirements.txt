@@ -1,0 +1,7 @@
+Flask
+Flask-SQLAlchemy
+torch
+sentence-transformers
+opencv-python
+torchvision
+functional
