@@ -1,5 +1,5 @@
 from sentence_transformers import SentenceTransformer, util
-# from scripts.database import query_database
+from scripts.database import query_database
 import torch
 import numpy as np
 import csv
