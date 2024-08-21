@@ -21,11 +21,6 @@ This is a Flask-based web application that allows users to upload videos, proces
 
 1. **Clone the Repository**
 
-   ```sh
-   git clone https://github.com/your-username/video-retrieval-app.git
-   cd video-retrieval-app
-   ```
-
 2. **Create a Virtual Environment**
 
    Create a virtual environment to isolate your project's dependencies.
