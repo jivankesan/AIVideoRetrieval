@@ -1,7 +1,8 @@
 from sentence_transformers import SentenceTransformer, util
-from scripts.database import query_database
+# from scripts.database import query_database
 import torch
 import numpy as np
+import csv
 
 model = SentenceTransformer('all-MiniLM-L6-v2')
 
@@ -40,17 +41,46 @@ def search_similar_videos(text_embedding):
     return valid_videos[top_result]
 
 if __name__ == "__main__":
-    query = "I am 6 years old"
-    res = generate_text_embedding(query)
-    print(res)
-    print(res.dtype)
-    print(res.shape)
+    text_categories = [
+    "Cook.Cleandishes",        # 1
+    "Cook.Cleanup",            # 2
+    "Cook.Cut",                # 3
+    "Cook.Stir",               # 4
+    "Cook.Usestove",           # 5
+    "Cutbread",                # 6
+    "Drink.Frombottle",        # 7
+    "Drink.Fromcan",           # 8
+    "Drink.Fromcup",           # 9
+    "Drink.Fromglass",         # 10
+    "Eat.Attable",             # 11
+    "Eat.Snack",               # 12
+    "Enter",                   # 13
+    "Getup",                   # 14
+    "Laydown",                 # 15
+    "Leave",                   # 16
+    "Makecoffee.Pourgrains",   # 17
+    "Makecoffee.Pourwater",    # 18
+    "Maketea.Boilwater",       # 19
+    "Maketea.Insertteabag",    # 20
+    "Pour.Frombottle",         # 21
+    "Pour.Fromcan",            # 22
+    "Pour.Fromkettle",         # 23
+    "Readbook",                # 24
+    "Sitdown",                 # 25
+    "Takepills",               # 26
+    "Uselaptop",               # 27
+    "Usetablet",               # 28
+    "Usetelephone",            # 29
+    "Walk",                    # 30
+    "WatchTV"                  # 31
+]
     
-    query2 = "How old are you young child?"
-    res2 = generate_text_embedding(query2)
-    print(res2)
-    print(res2.dtype)
-    print(res2.shape)
-    
-    cos_scores = util.pytorch_cos_sim(res, res2)
-    print(cos_scores)
+    with open('text_embeddings.csv', 'w', newline='') as csvfile:
+        writer = csv.writer(csvfile)
+        writer.writerow(['Text', 'Embedding'])  # Write the header
+        
+        for text in text_categories:
+            embedding = generate_text_embedding(text)
+            writer.writerow([text, embedding])
+
+
