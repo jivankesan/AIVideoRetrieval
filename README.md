@@ -124,19 +124,3 @@ To reset the database from the terminal:
    ```python
    exit()
    ```
-
-## Contributing
-
-If you wish to contribute to this project, please fork the repository and create a pull request with your changes. Ensure that your code follows the project's coding standards and includes appropriate tests.
-
-## License
-
-This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
-
-## Contact
-
-For any issues or questions, please open an issue on the repository or contact the repository owner.
-
----
-
-This `README.md` file provides step-by-step instructions for cloning the repository, setting up the environment, and running the Flask application. It also includes basic usage instructions, information on resetting the database, and contributing guidelines. You can modify this file to suit your specific project requirements.
